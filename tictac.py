@@ -67,10 +67,10 @@ if __name__ == "__main__":
     #Seed the random number generator
     random.seed(1)
 
-    # Create layer 1 (4 neurons, each with 3 inputs)
+    # Create layer 1 (30 neurons, each with 9 inputs)
     layer1 = NeuronLayer(30, 9)
 
-    # Create layer 2 (a single neuron with 4 inputs)
+    # Create layer 2 (30 neuron with 9 inputs)
     layer2 = NeuronLayer(9, 30)
 
     # Combine the layers to create a neural network
@@ -82,6 +82,7 @@ if __name__ == "__main__":
     # The training set. We have 7 examples, each consisting of 3 input values
     # and 1 output value.
 
+    # Trainingssätze mit 9 Input für das TicTacToe Feld   0.5 = leer  |   1 = x     |   0 = O 
     training_set_inputs = array([     
 	[	0.5,	0.5,	0.5,	0.5,	0.5,	0.5,	0.5,	0.5,	0.5	],
 	[	1,	0.5,	0.5,	0.5,	0.5,	0.5,	0.5,	0.5,	0.5	],
@@ -117,7 +118,7 @@ if __name__ == "__main__":
 	[	1,	1,	0,	0,	0,	1,	1,	1,	0	]])
   
 
-
+     # Transformierte Darstellung der Outputsätze 
     training_set_outputs = array([      
 	[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 			0.5, 0.5, 0.5, 0.5, 1, 1, 1, 1, 1, 1, 		0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 1, 1],
 	[0.5, 0.5, 0.5, 0.5, 1, 1, 1, 1, 1, 1, 		0.5, 0.5, 0.5, 0, 0, 0, 0, 0, 0, 0, 		1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
@@ -128,8 +129,6 @@ if __name__ == "__main__":
 	[0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 1, 1, 1, 1, 	0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0, 0, 0, 	0.5, 0.5, 0.5, 0.5, 1, 1, 1, 1, 1, 1],
 	[0.5, 0.5, 0.5, 0, 0, 0, 0, 0, 0, 0, 		0.5, 0.5, 1, 1, 1, 1, 1, 1, 1, 1, 		0.5, 0.5, 1, 1, 1, 1, 1, 1, 1, 1],
 	[0.5, 0.5, 1, 1, 1, 1, 1, 1, 1, 1,	 	0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 1, 1, 1, 1, 	0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0, 0, 0]]).T
-
-
 
 
     # Train the neural network using the training set.
