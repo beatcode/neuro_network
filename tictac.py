@@ -68,10 +68,10 @@ if __name__ == "__main__":
     random.seed(1)
 
     # Create layer 1 (4 neurons, each with 3 inputs)
-    layer1 = NeuronLayer(30, 9)
+    layer1 = NeuronLayer(10, 9)
 
     # Create layer 2 (a single neuron with 4 inputs)
-    layer2 = NeuronLayer(9, 30)
+    layer2 = NeuronLayer(9, 10)
 
     # Combine the layers to create a neural network
     neural_network = NeuralNetwork(layer1, layer2)
@@ -134,22 +134,48 @@ if __name__ == "__main__":
 
     # Train the neural network using the training set.
     # Do it 60,000 times and make small adjustments each time.
-    neural_network.train(training_set_inputs, training_set_outputs, 100000)
+    neural_network.train(training_set_inputs, training_set_outputs, 100)
 
     print "Stage 2) New synaptic weights after training: "
     neural_network.print_weights()
 
     # Test the neural network with a new situation.
-    print "Stage 3) Considering a new situation [1, -, -, -, -, -, -, -, -] -> ?: "
+    print "Berechnung Runde 2 [1, -, -, -, -, -, -, -, -] -> ?: "
     hidden_state, output = neural_network.think(array([1, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]))
     print output
 
-    print "Stage 3) Considering a new situation [-, -, -, -, 1, -, -, -, -] -> ?: "
-    hidden_state, output = neural_network.think(array([0.5, 0.5, 0.5, 0.5, 1, 0.5, 0.5, 0.5, 0.5]))
+    print "Berechnung Runde 3 "
+    hidden_state, output = neural_network.think(output)
     print output
 
-    print "Stage 3) Considering a new situation [-, -, -, -, -, -, -, -, 0] -> ?: "
-    hidden_state, output = neural_network.think(array([0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0]))
+    print "Berechnung Runde 4 "
+    hidden_state, output = neural_network.think(output)
+    print output
+
+    print "Berechnung Runde 5 "
+    hidden_state, output = neural_network.think(output)
+    print output
+
+    print "Berechnung Runde 6 "
+    hidden_state, output = neural_network.think(output)
     print output
 
 
+    print "Berechnung Runde 7 "
+    hidden_state, output = neural_network.think(output)
+    print output
+
+
+    print "Berechnung Runde 8 "
+    hidden_state, output = neural_network.think(output)
+    print output
+
+
+    print "Berechnung Runde 9 "
+    hidden_state, output = neural_network.think(output)
+    print output
+
+
+
+
+    
