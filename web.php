@@ -13,16 +13,11 @@
 
 <script>
 
-
-function setTableCellVal(input) {
+function setval(input) {
 document.getElementById(input).value='x' 
 }
 
-
-
 </script>
-
-
 
 <div class="page-header">
   <h1>Neuronales Netzwerk <small>Tic Tac Toe</small></h1>
@@ -137,35 +132,35 @@ print_r($daten);
 <form action="" id="form" name="form" method="post">
 <table id="table1">
     <tr>
-        <td onclick="setTableCellVal('1')">
+        <td onclick="setval('1')">
             <input id="1"  type="text" name="tictactoe[1]" input="1"  maxlength="1" size="1"></td>
         </td>
-        <td onclick="setTableCellVal('2')">
+        <td onclick="setval('2')">
             <input id="2" type="text" name="tictactoe[2]"  maxlength="1" size="1" > </td>
         </td>
-        <td onclick="setTableCellVal('3')">
+        <td onclick="setval('3')">
             <input id="3" type="text" name="tictactoe[3]"  maxlength="1" size="1"></td>
         </td>
    </tr>
    <tr>
-       <td onclick="setTableCellVal('4')">
+       <td onclick="setval('4')">
             <input id="4" type="text" name="tictactoe[4]"  maxlength="1" size="1"></td>
         </td>
-       <td onclick="setTableCellVal('5')">
+       <td onclick="setval('5')">
             <input id="5" type="text" name="tictactoe[5]"  maxlength="1" size="1"></td>
         </td>
-        <td onclick="setTableCellVal('6')">
+        <td onclick="setval('6')">
             <input id="6" type="text" name="tictactoe[6]"  maxlength="1" size="1"></td>
         </td>
     </tr>
     <tr>
-        <td onclick="setTableCellVal('7')">
+        <td onclick="setval('7')">
             <input id="7" type="text" name="tictactoe[7]"  maxlength="1" size="1"></td>
         </td>
-       <td onclick="setTableCellVal('8')">
+       <td onclick="setval('8')">
             <input id="8" type="text" name="tictactoe[8]"  maxlength="1" size="1"></td>
         </td>
-       <td onclick="setTableCellVal('9')">
+       <td onclick="setval('9')">
             <input id="9" type="text" name="tictactoe[9]"  maxlength="1" size="1"></td>
             <input type="hidden" name="submit"  value="x" input="1"  maxlength="1" size="1"></td>
 
