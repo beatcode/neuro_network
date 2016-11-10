@@ -1,4 +1,4 @@
-# neuro_network
+# neuroal_network
 
 Das Repository wird laufend angepasst. Es dient für das Verständnis der Funktionsweise eines einfachen neuronalen Netzwerk.
 
