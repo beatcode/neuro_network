@@ -11,9 +11,9 @@ class NeuronLayer():
 
 
 class NeuralNetwork():
-    def __init__(self, layer1, layer2):
+    def __init__(self, layer1, layer2, input):
 
-
+        self.input = input
         self.layer1 = layer1
         self.layer2 = layer2
 
@@ -71,113 +71,115 @@ class NeuralNetwork():
 
 if __name__ == "__main__":
 
-    #Seed the random number generator
-random.seed(1)
+        #Seed the random number generator
+    random.seed(1)
 
-    # Create layer 1 (4 neurons, each with 3 inputs)
-layer1 = NeuronLayer(10, 9)
+        # Create layer 1 (4 neurons, each with 3 inputs)
+    layer1 = NeuronLayer(10, 9)
 
-    # Create layer 2 (a single neuron with 4 inputs)
-layer2 = NeuronLayer(9, 10)
+        # Create layer 2 (a single neuron with 4 inputs)
+    layer2 = NeuronLayer(9, 10)
 
-    # Combine the layers to create a neural network
-neural_network = NeuralNetwork(layer1, layer2)
+    # Parameter vom Web
+    input = [ sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5], sys.argv[6], sys.argv[7], sys.argv[8], sys.argv[9] ]
 
-print "Stage 1) Random starting synaptic weights: </br>"
-neural_network.print_weights()
+        # Combine the layers to create a neural network
+    neural_network = NeuralNetwork(layer1, layer2, input)
 
-
-    # The training set. We have 7 examples, each consisting of 3 input values
-    # and 1 output value.
-
-training_set_inputs = array([     
-[ 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5 ],
-[ 1, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5 ],
-[ 1, 0.5, 0.5, 0.5, 0, 0.5, 0.5, 0.5, 0.5 ],
-[ 1, 0.5, 0.5, 0.5, 0, 0.5, 0.5, 0.5, 1 ],
-[ 1, 0.5, 0.5, 0.5, 0, 0.5, 0.5, 0, 1 ],
-[ 1, 1, 0.5, 0.5, 0, 0.5, 0.5, 0, 1 ],
-[ 1, 1, 0, 0.5, 0, 0.5, 0.5, 0, 1 ],
-[ 1, 1, 0, 0.5, 0, 0.5, 1, 0, 1 ],
-[ 1, 1, 0, 0, 0, 0.5, 1, 0, 1 ],
-
-[ 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5 ],
-[ 0.5, 0.5, 0.5, 0.5, 1, 0.5, 0.5, 0.5, 0.5 ],
-[ 0.5, 0.5, 0, 0.5, 1, 0.5, 0.5, 0.5, 0.5 ],
-[ 0.5, 0.5, 0, 0.5, 1, 0.5, 0.5, 1, 0.5 ],
-[ 0.5, 0, 0, 0.5, 1, 0.5, 0.5, 1, 0.5 ],
-[ 1, 0, 0, 0.5, 1, 0.5, 0.5, 1, 0.5 ], 
-[ 1, 0, 0, 0.5, 1, 0, 0.5, 1, 0.5 ],
-[ 1, 0, 0, 0.5, 1, 0, 0.5, 1, 1 ],
-[ 1, 0, 0, 0.5, 1, 0, 0, 1, 1 ],
-
-[ 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5 ], 
-[ 0.5, 1, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5 ],
-[ 0.5, 1, 0.5, 0.5, 0, 0.5, 0.5, 0.5, 0.5 ],
-[ 0.5, 1, 0.5, 0.5, 0, 0.5, 0.5, 1, 0.5 ],
-[ 0.5, 1, 0, 0.5, 0, 0.5, 0.5, 1, 0.5 ],
-[ 0.5, 1, 0, 0.5, 0, 0.5, 1, 1, 0.5 ],
-[ 0.5, 1, 0, 0, 0, 0.5, 1, 1, 0.5 ],
-[ 0.5, 1, 0, 0, 0, 1, 1, 1, 0.5 ],
-[ 0.5, 1, 0, 0, 0, 1, 1, 1, 0 ]])
-  
+    print "Stage 1) Random starting synaptic weights: </br>"
+    neural_network.print_weights()
 
 
-training_set_outputs = array([      
-[1, 1, 1, 1, 1, 1, 1, 1, 1, 			0.5, 0.5, 0.5, 0.5, 1, 1, 1, 1, 1, 		0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 1],
-[0.5, 0.5, 0.5, 0.5, 1, 1, 1, 1, 1, 		0.5, 0.5, 0.5, 0, 0, 0, 0, 0, 0, 		1, 1, 1, 1, 1, 1, 1, 1, 1],
-[0.5, 0.5, 0.5, 0.5, 0.5, 0, 0, 0, 0, 		0.5, 0, 0, 0, 0, 0, 0, 0, 0, 			0.5, 0.5, 0.5, 0, 0, 0, 0, 0, 0],
-[0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0, 0, 	0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 1, 	0.5, 0.5, 0.5, 0.5, 0.5, 0, 0, 0, 0], 
-[0.5, 0, 0, 0, 0, 0, 0, 0, 0,	 		1, 1, 1, 1, 1, 1, 1, 1, 1, 			0.5, 0, 0, 0, 0, 0, 0, 0, 0],
-[0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 1, 	0.5, 0.5, 0.5, 0.5, 0.5, 0, 0, 0, 0, 		0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 1, 1, 1],
-[0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 1, 1, 1, 	0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0, 0, 	0.5, 0.5, 0.5, 0.5, 1, 1, 1, 1, 1],
-[0.5, 0.5, 0.5, 0, 0, 0, 0, 0, 0, 		0.5, 0.5, 1, 1, 1, 1, 1, 1, 1, 			0.5, 0.5, 1, 1, 1, 1, 1, 1, 1],
-[0.5, 0.5, 1, 1, 1, 1, 1, 1, 1, 		0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 1, 1, 1, 		0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0, 0]]).T
+        # The training set. We have 7 examples, each consisting of 3 input values
+        # and 1 output value.
+
+    training_set_inputs = array([     
+    [ 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5 ],
+    [ 1, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5 ],
+    [ 1, 0.5, 0.5, 0.5, 0, 0.5, 0.5, 0.5, 0.5 ],
+    [ 1, 0.5, 0.5, 0.5, 0, 0.5, 0.5, 0.5, 1 ],
+    [ 1, 0.5, 0.5, 0.5, 0, 0.5, 0.5, 0, 1 ],
+    [ 1, 1, 0.5, 0.5, 0, 0.5, 0.5, 0, 1 ],
+    [ 1, 1, 0, 0.5, 0, 0.5, 0.5, 0, 1 ],
+    [ 1, 1, 0, 0.5, 0, 0.5, 1, 0, 1 ],
+    [ 1, 1, 0, 0, 0, 0.5, 1, 0, 1 ],
+
+    [ 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5 ],
+    [ 0.5, 0.5, 0.5, 0.5, 1, 0.5, 0.5, 0.5, 0.5 ],
+    [ 0.5, 0.5, 0, 0.5, 1, 0.5, 0.5, 0.5, 0.5 ],
+    [ 0.5, 0.5, 0, 0.5, 1, 0.5, 0.5, 1, 0.5 ],
+    [ 0.5, 0, 0, 0.5, 1, 0.5, 0.5, 1, 0.5 ],
+    [ 1, 0, 0, 0.5, 1, 0.5, 0.5, 1, 0.5 ], 
+    [ 1, 0, 0, 0.5, 1, 0, 0.5, 1, 0.5 ],
+    [ 1, 0, 0, 0.5, 1, 0, 0.5, 1, 1 ],
+    [ 1, 0, 0, 0.5, 1, 0, 0, 1, 1 ],
+
+    [ 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5 ], 
+    [ 0.5, 1, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5 ],
+    [ 0.5, 1, 0.5, 0.5, 0, 0.5, 0.5, 0.5, 0.5 ],
+    [ 0.5, 1, 0.5, 0.5, 0, 0.5, 0.5, 1, 0.5 ],
+    [ 0.5, 1, 0, 0.5, 0, 0.5, 0.5, 1, 0.5 ],
+    [ 0.5, 1, 0, 0.5, 0, 0.5, 1, 1, 0.5 ],
+    [ 0.5, 1, 0, 0, 0, 0.5, 1, 1, 0.5 ],
+    [ 0.5, 1, 0, 0, 0, 1, 1, 1, 0.5 ],
+    [ 0.5, 1, 0, 0, 0, 1, 1, 1, 0 ]])
+      
+
+
+    training_set_outputs = array([      
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 			     0.5, 0.5, 0.5, 0.5, 1, 1, 1, 1, 1, 		    0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 1],
+    [0.5, 0.5, 0.5, 0.5, 1, 1, 1, 1, 1, 		 0.5, 0.5, 0.5, 0, 0, 0, 0, 0, 0, 		        1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [0.5, 0.5, 0.5, 0.5, 0.5, 0, 0, 0, 0, 		 0.5, 0, 0, 0, 0, 0, 0, 0, 0, 			        0.5, 0.5, 0.5, 0, 0, 0, 0, 0, 0],
+    [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0, 0, 	 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 1, 	0.5, 0.5, 0.5, 0.5, 0.5, 0, 0, 0, 0], 
+    [0.5, 0, 0, 0, 0, 0, 0, 0, 0,	 		     1, 1, 1, 1, 1, 1, 1, 1, 1, 			        0.5, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 1,  0.5, 0.5, 0.5, 0.5, 0.5, 0, 0, 0, 0, 		    0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 1, 1, 1],
+    [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 1, 1, 1, 	 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0, 0, 	    0.5, 0.5, 0.5, 0.5, 1, 1, 1, 1, 1],
+    [0.5, 0.5, 0.5, 0, 0, 0, 0, 0, 0, 		     0.5, 0.5, 1, 1, 1, 1, 1, 1, 1, 			    0.5, 0.5, 1, 1, 1, 1, 1, 1, 1],
+    [0.5, 0.5, 1, 1, 1, 1, 1, 1, 1, 		     0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 1, 1, 1, 		0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0, 0]]).T
 
 
 
 
-    # Train the neural network using the training set.
-    # Do it 60,000 times and make small adjustments each time.
-neural_network.train(training_set_inputs, training_set_outputs, 100)
-print "Stage 2) New synaptic weights after training: </br>"
+        # Train the neural network using the training set.
+        # Do it 60,000 times and make small adjustments each time.
+    neural_network.train(training_set_inputs, training_set_outputs, 100)
+    print "Stage 2) New synaptic weights after training: </br>"
 
 
-    # Test the neural network with a new situation.
-print "Berechnung Runde 2 [1, -, -, -, -, -, -, -, -] -> ?: </br>"
-hidden_state, output = neural_network.think(array([1, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]))
-print output
+        # Test the neural network with a new situation.
+    print "Berechnung Runde 2 [1, -, -, -, -, -, -, -, -] -> ?: </br>"
+    hidden_state, output = neural_network.think(array([1, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]))
+    print output
 
-print " Berechnung Runde 3 </br> "
-hidden_state, output = neural_network.think(output)
-print output
+    print " Berechnung Runde 3 </br> "
+    hidden_state, output = neural_network.think(output)
+    print output
 
-print "Berechnung Runde 4 </br>"
-hidden_state, output = neural_network.think(output)
-print output
+    print "Berechnung Runde 4 </br>"
+    hidden_state, output = neural_network.think(output)
+    print output
 
-print "Berechnung Runde 5 </br>"
-hidden_state, output = neural_network.think(output)
-print output
+    print "Berechnung Runde 5 </br>"
+    hidden_state, output = neural_network.think(output)
+    print output
 
-print "Berechnung Runde 6 </br>"
-hidden_state, output = neural_network.think(output)
-print output
+    print "Berechnung Runde 6 </br>"
+    hidden_state, output = neural_network.think(output)
+    print output
 
-print "Berechnung Runde 7 </br>"
-hidden_state, output = neural_network.think(output)
-print output
+    print "Berechnung Runde 7 </br>"
+    hidden_state, output = neural_network.think(output)
+    print output
 
-print "Berechnung Runde 8 </br>"
-hidden_state, output = neural_network.think(output)
-print output
+    print "Berechnung Runde 8 </br>"
+    hidden_state, output = neural_network.think(output)
+    print output
 
-print "Berechnung Runde 9 </br>"
-hidden_state, output = neural_network.think(output)
-print output
+    print "Berechnung Runde 9 </br>"
+    hidden_state, output = neural_network.think(output)
+    print output
 
-   
-test = array([ sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5], sys.argv[6], sys.argv[7], sys.argv[8], sys.argv[9] ])
-test2 = sys.argv[1]
-print test2
+    print neural_network.input
+    # 
+     
 
