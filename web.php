@@ -1,12 +1,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-
-
+<div class="page-header">
+  <h1>Neuronales Netzwerk <small>Tic Tac Toe</small></h1>
+</div>
 
 <?php
 if($_POST['submit'])
 {
-
+echo "laasdfh";
 $daten = $_POST['tictactoe'];
 
 print_r($daten);
@@ -127,7 +130,6 @@ document.getElementById("board").rows[row].cells[cell].innerHTML='<h2><i class="
 
 </script>
 
-
 <table id ='board'>
   <tr>
  <td  onclick="setval('0', '0')"></td>
@@ -146,9 +148,6 @@ document.getElementById("board").rows[row].cells[cell].innerHTML='<h2><i class="
   </tr>
 </table>
 
-
-
-<h1><i class="icon-circle-romve"></i></h1>
 <br>
 <button type="submit" name="SubmitButton"  >an Netzwerk senden</button>
 </form>
