@@ -1,5 +1,4 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 
 
 
@@ -114,14 +113,16 @@ print_r($daten);
 
 <title> Tic-Tac-Toe </title>    
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js" type="text/javascript" charset="utf-8"></script>  
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
 <link type="text/css" rel="stylesheet" href="style.css" />  
 
 <body>
 
 <script>
 
-function setval(input) {
-document.getElementById(input).value='x' 
+function setval(row,cell) {
+document.getElementById("board").rows[row].cells[cell].innerHTML='<h2><i class="fa fa-circle-thin"></i></h2>';
 }
 
 </script>
@@ -129,24 +130,23 @@ document.getElementById(input).value='x'
 
 <table id ='board'>
   <tr>
-    <td  onclick="setval('1')"> <input id="1" type="text" name="lname">  </td>
- <td  onclick="setval('2')"> <input id="2" type="text" name="lname">  </td>
- <td  onclick="setval('3')"> <input id="3" type="text" name="lname">  </td>
+ <td  onclick="setval('0', '0')"></td>
+ <td  onclick="setval('0', '1')"></td>
+ <td  onclick="setval('0', '2')"></td>
   </tr>
   <tr>
-    <td></td>
-   <td></td>
-   <td></td>
+    <td  onclick="setval('1', '0')"></td>
+   <td  onclick="setval('1', '1')"></td>
+   <td  onclick="setval('1', '2')"></td>
   </tr>
   <tr>
-    <td></td>
-    <td></td> 
-    <td></td>
+    <td  onclick="setval('2', '0')"></td>
+    <td  onclick="setval('2', '1')"></td> 
+    <td  onclick="setval('2', '2')"></td>
   </tr>
 </table>
 
 
-<h1><i class="icon-circle-blank"></i></h1>
 
 <h1><i class="icon-circle-romve"></i></h1>
 <br>
