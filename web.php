@@ -7,18 +7,20 @@ session_start();
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
+<script>
+</script>
 
 <div class="page-header">
   <h1>Neuronales Netzwerk <small>Tic Tac Toe</small></h1>
 </div>
 
+
 <?php
+	
+
 if (!empty($_POST)){
 
 
-$value = $_SESSION["abc"]; 
-
-echo $value;
 $daten = $_POST['tictactoe'];
 
 print_r($daten);
@@ -133,30 +135,47 @@ print_r($daten);
 
 <script>
 
-function setval(row,cell) {
-document.getElementById("board").rows[row].cells[cell].innerHTML='<h2><i class="fa fa-circle-thin"></i></h2>';
-sessionStorage.setItem("abc", "adsddddddddddddddd1");
-
- '<%Session["abc"] = "asfdasfdaa"; %>';
+function setval(row,cell,feld, wert) {
+document.getElementById("board").rows[row].cells[cell].innerHTML='<h2><i class="fa fa-circle-thin"></i></h2> <input type = "hidden" id="' + feld + '"  value="' + wert + '" >';
 }
+
+function test() {
+
+
+feld1 = document.getElementById("1").value;
+feld2 = document.getElementById("2").value;
+feld3 = document.getElementById("3").value;
+feld4 = document.getElementById("4").value;
+feld5 = document.getElementById("5").value;
+feld6 = document.getElementById("6").value;
+feld7 = document.getElementById("7").value;
+feld8 = document.getElementById("8").value;
+feld9 = document.getElementById("9").value;
+
+
+var result = [feld1, feld2, feld3, feld4, feld5, feld6, feld7, feld8, feld9];
+return result;
+
+}
+
 
 </script>
 
 <table id ='board'>
   <tr>
- <td  onclick="setval('0', '0')"> </td>
- <td  onclick="setval('0', '1')"></td>
- <td  onclick="setval('0', '2')"></td>
+ <td  onclick="setval('0', '0', '1', '1')"> <input type="hidden" id="1" value="0.5"> </td>
+ <td  onclick="setval('0', '1', '2', '1')"> <input type="hidden" id="2" value="0.5"> </td>
+ <td  onclick="setval('0', '2', '3', '1')"> <input type="hidden" id="3" value="0.5"> </td>
   </tr>
   <tr>
-    <td  onclick="setval('1', '0')"></td>
-   <td  onclick="setval('1', '1')"></td>
-   <td  onclick="setval('1', '2')"></td>
+   <td  onclick="setval('1', '0', '4', '1')">  <input type="hidden" id="4" value="0.5"> </td>
+   <td  onclick="setval('1', '1', '5', '1')">  <input type="hidden" id="5" value="0.5"> </td>
+   <td  onclick="setval('1', '2', '6', '1')">  <input type="hidden" id="6" value="0.5"> </td>
   </tr>
   <tr>
-    <td  onclick="setval('2', '0')"></td>
-    <td  onclick="setval('2', '1')"></td> 
-    <td  onclick="setval('2', '2')"></td>
+    <td  onclick="setval('2', '0', '7', '1')"> <input type="hidden" id="7" value="0.5"> </td>
+    <td  onclick="setval('2', '1', '8', '1')"> <input type="hidden" id="8" value="0.5"> </td>
+    <td  onclick="setval('2', '2', '9', '1')"> <input type="hidden" id="9" value="0.5"> </td>
   </tr>
 </table>
 
@@ -164,7 +183,7 @@ sessionStorage.setItem("abc", "adsddddddddddddddd1");
 <button type="submit" name="SubmitButton"  >an Netzwerk senden</button>
 </form>
 
-
+<button onclick="alert(test())">Zeig Input Parameter</button>
 <?php
 }
 ?>
