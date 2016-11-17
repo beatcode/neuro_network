@@ -22,16 +22,16 @@ if (!empty($_POST)){
 
 // TOdo übergabe der Inputparamter
 
+// dummy input
 $daten[1]= '1';
-$daten[2]= '1';
-$daten[3]= '1';
-$daten[4]= '1';
-$daten[5]= '1';
-$daten[6]= '1';
-$daten[7]= '1';
-$daten[8]= '1';
-$daten[9]= '1';
-
+$daten[2]= '0.5';
+$daten[3]= '0.5';
+$daten[4]= '0.5';
+$daten[5]= '0.5';
+$daten[6]= '0.5';
+$daten[7]= '0.5';
+$daten[8]= '0.5';
+$daten[9]= '0.5';
 
 // Aufruf des Python script mit den Inputparameter  
         $command = "python /var/www/html/neuronal_network/tic.py $daten[1] $daten[2] $daten[3] $daten[4] $daten[5] $daten[6] $daten[7] $daten[8] $daten[9] ";
@@ -56,11 +56,11 @@ $daten[9]= '1';
 <script>
 
 function setval(row,cell,feld, wert) {
-document.getElementById("board").rows[row].cells[cell].innerHTML='<h2><i class="fa fa-circle-thin"></i></h2> <input type = "hidden" id="' + feld + '"  value="' + wert + '" >';
+	document.getElementById("board").rows[row].cells[cell].innerHTML='<h2><i class="fa fa-circle-thin"></i></h2> <input type = "hidden" id="' + feld + '"  value="' + wert + '" >';
+
 }
 
-function test() {
-
+function ReadInput() {
 
 feld1 = document.getElementById("1").value;
 feld2 = document.getElementById("2").value;
@@ -71,7 +71,6 @@ feld6 = document.getElementById("6").value;
 feld7 = document.getElementById("7").value;
 feld8 = document.getElementById("8").value;
 feld9 = document.getElementById("9").value;
-
 
 var result = [feld1, feld2, feld3, feld4, feld5, feld6, feld7, feld8, feld9];
 return result;
@@ -103,7 +102,7 @@ return result;
 <button type="submit" name="SubmitButton"  >an Netzwerk senden</button>
 </form>
 
-<button onclick="alert(test())">Zeig Input Parameter</button>
+<button onclick="alert(ReadInput())">Zeig Input Parameter</button>
 <?php
 }
 ?>
