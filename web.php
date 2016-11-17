@@ -1,15 +1,24 @@
+<?php
+// Start the session
+session_start();
+?>
+
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
 
 <div class="page-header">
   <h1>Neuronales Netzwerk <small>Tic Tac Toe</small></h1>
 </div>
 
 <?php
-if($_POST['submit'])
-{
-echo "laasdfh";
+if (!empty($_POST)){
+
+
+$value = $_SESSION["abc"]; 
+
+echo $value;
 $daten = $_POST['tictactoe'];
 
 print_r($daten);
@@ -126,13 +135,16 @@ print_r($daten);
 
 function setval(row,cell) {
 document.getElementById("board").rows[row].cells[cell].innerHTML='<h2><i class="fa fa-circle-thin"></i></h2>';
+sessionStorage.setItem("abc", "adsddddddddddddddd1");
+
+ '<%Session["abc"] = "asfdasfdaa"; %>';
 }
 
 </script>
 
 <table id ='board'>
   <tr>
- <td  onclick="setval('0', '0')"></td>
+ <td  onclick="setval('0', '0')"> </td>
  <td  onclick="setval('0', '1')"></td>
  <td  onclick="setval('0', '2')"></td>
   </tr>
