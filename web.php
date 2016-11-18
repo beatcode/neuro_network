@@ -55,9 +55,19 @@ $daten[9]= '0.5';
 
 <script>
 
-function setval(row,cell,feld, wert) {
+function setval(row,cell,feld, wert, player) {
+	
+	act_field = document.getElementById(feld).value;
+	if( act_field == '1'  && act_field == '0') {
+	} else if ( act_field == '0.5') {
+	if (player == 'Player 1' ) {
 	document.getElementById("board").rows[row].cells[cell].innerHTML='<h2><i class="fa fa-circle-thin"></i></h2> <input type = "hidden" id="' + feld + '"  value="' + wert + '" >';
+	} else {
+	document.getElementById("board").rows[row].cells[cell].innerHTML='<h2><i class="fa fa-times"></i></h2> <input type = "hidden" id="' + feld + '"  value="' + wert + '" >';
 
+	}	
+
+	}
 }
 
 function ReadInput() {
@@ -82,9 +92,9 @@ return result;
 
 <table id ='board'>
   <tr>
- <td  onclick="setval('0', '0', '1', '1')"> <input type="hidden" id="1" value="0.5"> </td>
- <td  onclick="setval('0', '1', '2', '1')"> <input type="hidden" id="2" value="0.5"> </td>
- <td  onclick="setval('0', '2', '3', '1')"> <input type="hidden" id="3" value="0.5"> </td>
+ <td  onclick="setval('0', '0', '1', '1', 'Player 1')"> <input type="hidden" id="1" value="0.5"> </td>
+ <td  onclick="setval('0', '1', '2', '1', 'Player 2')"> <input type="hidden" id="2" value="0.5"> </td>
+ <td  onclick="setval('0', '2', '3', '1', 'Player 1')"> <input type="hidden" id="3" value="0.5"> </td>
   </tr>
   <tr>
    <td  onclick="setval('1', '0', '4', '1')">  <input type="hidden" id="4" value="0.5"> </td>
