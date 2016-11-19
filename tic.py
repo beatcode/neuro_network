@@ -180,6 +180,6 @@ if __name__ == "__main__":
     print output
 
     print neural_network.input
-    # 
+
      
 
