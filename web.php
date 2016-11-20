@@ -99,8 +99,7 @@ function clear_content() {
 
 
 function set_output(val) {
-   
-   
+      
     var output = val;
     output = output.replace(/\s/g, "") ;
     var splits = output.split(",");
@@ -144,7 +143,7 @@ if ( $(".chk").is(":checked")) {
 // training
 
 
-} else {
+} else   {
 
     set_firstplayer();
 
@@ -161,7 +160,7 @@ if ( $(".chk").is(":checked")) {
 
    $("#output").val(ReadInput());
    count_Zug();
-
+   set_player("1");
 }
 
 }
@@ -176,7 +175,7 @@ function setval_compute(row,cell,feld, wert) {
 	document.getElementById("board").rows[row].cells[cell].innerHTML='<h2><i class="fa fa-times"></i></h2> <input type = "hidden" id="' + feld + '"  value="' + wert + '" >';
     } else {
 	document.getElementById("board").rows[row].cells[cell].innerHTML='<input type = "hidden" id="' + feld + '"  value="0.5" >';
-}
+	}
 
 
 }
