@@ -58,6 +58,14 @@ return result;
 }
 
 
+function clear_content() {
+
+ var input = "0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5";
+ 
+ set_output(input);
+
+}
+
 
 function set_output(val) {
    
@@ -85,11 +93,11 @@ function setval_human(row,cell,feld, wert) {
 	
 	act_field = document.getElementById(feld).value;
 
-    if( act_field == 1.0  && act_field == 0.0) {
+    if( act_field != '0.5' ) {
 
-    } else if ( wert == 0.0) {
+    } else if ( wert == '0.0') {
 	document.getElementById("board").rows[row].cells[cell].innerHTML='<h2><i class="fa fa-circle-thin"></i></h2> <input type = "hidden" id="' + feld + '"  value="' + wert + '" >';
-    } else if (wert == 1.0) {
+    } else if (wert == '1.0') {
 	document.getElementById("board").rows[row].cells[cell].innerHTML='<h2><i class="fa fa-times"></i></h2> <input type = "hidden" id="' + feld + '"  value="' + wert + '" >';
     } else {
 	document.getElementById("board").rows[row].cells[cell].innerHTML='<input type = "hidden" id="' + feld + '"  value="0.5" >';
@@ -112,6 +120,14 @@ function setval_compute(row,cell,feld, wert) {
 </script>
 
 
+<div class="container">
+  <div class="row">
+
+    <div class="col-sm-4">
+<input type="text" class="form-control" id="output" placeholder="Berechnung" disabled> 
+
+</div>
+    <div class="col-sm-4">
 <table id ='board'>
   <tr>
  <td  onclick="setval_human('0', '0', '1', '1.0')"> <input type="hidden" id="1" value="0.5"> </td>
@@ -130,11 +146,29 @@ function setval_compute(row,cell,feld, wert) {
   </tr>
 </table>
 
-<input type="text" id="output" value="">
 
-<button type="button" onclick="python()" id="send" >Python</button>
-<button onclick="alert(ReadInput())">Zeig Input Parameter</button>
-<button onclick="set_output()">Ouput setzen</button>
+    </div>
+    <div class="col-sm-4"> </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4"> </div>
+    <div class="col-sm-4">
+	<div class="center-block">
+    <br><br><button type="button" class="btn btn-success " onclick="python()" id="send" >An Netzwerk sende</button>
+     <button onclick="clear_content()" class="btn btn-danger " >Clear</button>
+ 	</div>
+	</div>
+    <div class="col-sm-4">
+
+</div>
+  
+ </div>
+</div>
+
+
+
+
+<!-- <button onclick="alert(ReadInput())">Zeig Input Parameter</button> -->
 
 
 </div>
