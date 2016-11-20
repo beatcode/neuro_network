@@ -7,13 +7,12 @@
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
+<title> Tic-Tac-Toe </title>    
 
 <div class="page-header">
-  <h1>Neuronales Netzwerk <small>Tic Tac Toe</small></h1>
+  <h1>Neuronales Netzwerk</h1>
 </div>
 
-
-<title> Tic-Tac-Toe </title>    
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js" type="text/javascript" charset="utf-8"></script>  
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
@@ -24,7 +23,6 @@
 <script>
 
 function python() {
-
 
 if ( $(".chk").is(":checked")) {
 
@@ -179,6 +177,27 @@ function setval_compute(row,cell,feld, wert) {
   </div>
  <div class="col-sm-6">
 
+	<div class="center-block">
+    	<br><br><button type="button" class="btn btn-success"  onclick="python()" id="send" >senden</button>
+     	<button onclick="clear_content()" class="btn btn-danger " >Clear</button>
+
+	<br> <h2>Trainingsmodus </h2>
+	<input type="checkbox" class="chk">
+	<p>Im Trainingsmodus werden Trainingssätze für das Neuronale Netzwerk erzeugt. Diese Trainingssätze bilden die Grundlage für das selbständige Training und das gewichten der Neuronen. </p>
+ 	</div>
+
+  </div>
+
+</form>
+
+</div>
+
+  </div>
+  <div class="row">
+    <div class="col-sm-6"> </div>
+
+    <div class="col-sm-6">
+
 <h2>Rückgabewert</h2>
 <form class="form-horizontal">
   <div class="form-group">
@@ -207,28 +226,10 @@ function setval_compute(row,cell,feld, wert) {
     <div class="col-sm-2">
       <input type="text" class="form-control" id="zug" value="0"  placeholder="Zug">
     </div>
-  </div>
-
-</form>
 
 </div>
-
-  </div>
-  <div class="row">
-    <div class="col-sm-6"> </div>
-
-    <div class="col-sm-6">
-	<div class="center-block">
-    <br><br><button type="button" class="btn btn-success"  onclick="python()" id="send" >senden</button>
-     <button onclick="clear_content()" class="btn btn-danger " >Clear</button>
-
-<br> <h2>Trainingsmodus </h2>
-<input type="checkbox" class="chk">
-<p>Im Trainingsmodus werden Trainingssätze für das Neuronale Netzwerk erzeugt. Diese Trainingssätze bilden die Grundlage für das selbständige Training und das gewichten der Neuronen. </p>
- 	</div>
-	</div>
   
- </div>
+</div>
 </div>
 
 
