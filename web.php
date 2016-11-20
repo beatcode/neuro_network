@@ -41,16 +41,28 @@ if ( $(".chk").is(":checked")) {
 	});
 
  	count();
+        
 }}
 
 $(document).ready(function(){
-
 
 $(".chk").click(function() {
   clear_content();
 });
 });
 
+
+function set_firstplayer() {
+
+player = $("#zug").val();
+
+if  (player == "0") {
+   $("#player").val("1");
+} else if (player == "1" ) {
+   $("#player").val("2");
+}
+
+}
 
 function ReadInput() {
 
@@ -74,15 +86,14 @@ return result;
 
 function clear_content() {
 
-
   $("#input").val("0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5");
   $("#output").val("");
   $("#calc").val("");
-  $("#zug").val("");
+  $("#zug").val("0");
+  $("#player").val("-");
 
  var input = "0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5"; 
  set_output(input);
-
 
 }
 
@@ -105,18 +116,39 @@ function set_output(val) {
     setval_compute('2', '2', '9',  splits[8]);
 }
 
-function count() {
+function count_Zug() {
 
    counter = $("#zug").val();
    counter++;
    $("#zug").val(counter);
+}
+
+function get_player() {
+   return $("#gezogen").val();
+}
+
+
+function set_player(val) {
+   $("#gezogen").val(val);
 
 }
+
 function setval_human(row,cell,feld, wert) {
+
 	
 
-    act_field = document.getElementById(feld).value;
+   act_field = document.getElementById(feld).value;
 
+
+if ( $(".chk").is(":checked")) {
+// training
+
+
+} else {
+
+    set_firstplayer();
+
+// Play
     if( act_field != '0.5' ) {
 
     } else if ( wert == '0.0') {
@@ -128,7 +160,10 @@ function setval_human(row,cell,feld, wert) {
     }
 
    $("#output").val(ReadInput());
-   count();
+   count_Zug();
+
+}
+
 }
 
 function setval_compute(row,cell,feld, wert) {
@@ -144,11 +179,9 @@ function setval_compute(row,cell,feld, wert) {
 }
 
 
-
 }
 
 </script>
-
 
 
 <div class="container">
@@ -223,15 +256,23 @@ function setval_compute(row,cell,feld, wert) {
   </div>
   <div class="form-group">
     <label for="zug" class="col-sm-2 control-label">Zug</label>
-    <div class="col-sm-2">
-      <input type="text" class="form-control" id="zug" value="0"  placeholder="Zug">
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="zug" value="0" placeholder="Zug">
     </div>
+  </div>
+  <div class="form-group">
+    <label for="player" class="col-sm-2 control-label">Mensch</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="player" value="-"  placeholder="">
+    </div>
+  </div>
 
 </div>
   
 </div>
 </div>
 
+      <input type="hidden" class="form-control" id="gezogen" value="0"  placeholder="">
 
 
 <!-- <button onclick="alert(ReadInput())">Zeig Input Parameter</button> -->
