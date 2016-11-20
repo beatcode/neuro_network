@@ -62,9 +62,11 @@ class NeuralNetwork():
         return output_from_layer1, output_from_layer2
 
     # The neural network prints its weights
-    # def print_weights(self):
-        # print "    Layer 1 (4 neurons, each with 3 inputs): </br>"
-        # print self.layer1.synaptic_weights
+    def get_weights(self, layer):
+     	if layer == '1':
+           return self.layer1.synaptic_weights
+       	elif layer == '2':
+	   return self.layer2.synaptic_weights
         # print "    Layer 2 (1 neuron, with 4 inputs): </br>" 
         # print self.layer2.synaptic_weights
 
@@ -83,22 +85,14 @@ if __name__ == "__main__":
     # Parameter vom Web
     input_parameter =  sys.argv[1]
     
-          # in array konvertieren
+      # in array konvertieren
     input_int = input_parameter.split(',')
 
-   
+    # numpy array
     input = np.array(input_int, dtype=np.float32)
 
-
-        # Combine the layers to create a neural network
+    # Combine the layers to create a neural network
     neural_network = NeuralNetwork(layer1, layer2, input)
-
-    # print "Stage 1) Random starting synaptic weights: </br>"
-    # neural_network.print_weights()
-
-
-        # The training set. We have 7 examples, each consisting of 3 input values
-        # and 1 output value.
 
     training_set_inputs = array([     
     [ 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5 ],
@@ -145,22 +139,24 @@ if __name__ == "__main__":
     [0.5, 0.5, 1, 1, 1, 1, 1, 1, 1, 		     0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 1, 1, 1, 		0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0, 0]]).T
 
 
-
-
-        # Train the neural network using the training set.
-        # Do it 60,000 times and make small adjustments each time.
+    # Train the neural network using the training set.
+    # Do it x times and make small adjustments each time.
     neural_network.train(training_set_inputs, training_set_outputs, 10000)
-    # print "Stage 2) New synaptic weights after training: </br>"
-
 
     # Test the neural network with a new situation.
+    
     # Resultat  runden
     hidden_state, output = neural_network.think( input )
     output_round = [ round(elem, 1) for elem in output ]
-
-   
     output_round_string = str(output_round).strip('[]')
         	
+
+    # speichere die akutellen gewichtung
+    # np.savetxt('/var/www/html/neuronal_network/weights_layer1.txt', np.asarray(neural_network.get_weights('1')), delimiter=",")
+    # np.savetxt('/var/www/html/neuronal_network/weights_layer2.txt', np.asarray(neural_network.get_weights('2')), delimiter=",")
+
+    # fuer ajax ausgeben
     print output_round_string
      
+
 
