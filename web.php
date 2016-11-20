@@ -1,10 +1,12 @@
-<?php
-session_start();
-?>
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8"/>
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
 
 <div class="page-header">
   <h1>Neuronales Netzwerk <small>Tic Tac Toe</small></h1>
@@ -21,22 +23,35 @@ session_start();
 
 <script>
 
-
 function python() {
 
-$.ajax({
-        type: 'POST',	
-        url: "/neuronal_network/python_call.php",
-	data: "input="+ ReadInput(),
-       success: function(data){
-		$("#output").val(data);
-		set_output(data);
+
+if ( $(".chk").is(":checked")) {
+
+} else {
+
+	$("#output").val(ReadInput());
+	$.ajax({
+        	type: 'POST',	
+        	url: "/neuronal_network/python_call.php",
+		data: "input="+ ReadInput(),
+       		success: function(data){
+			$("#calc").val(data);
+			$("#input").val(data);
+			set_output(data);
 	        }
+	});
+
+ 	count();
+}}
+
+$(document).ready(function(){
+
+
+$(".chk").click(function() {
+  clear_content();
 });
-
-
-}
-
+});
 
 
 function ReadInput() {
@@ -51,7 +66,8 @@ feld7 = document.getElementById("7").value;
 feld8 = document.getElementById("8").value;
 feld9 = document.getElementById("9").value;
 
-var result = [feld1, feld2, feld3, feld4, feld5, feld6, feld7, feld8, feld9];
+var result = [feld1,feld2,feld3,feld4,feld5,feld6,feld7,feld8,feld9];
+
 
 return result;
 
@@ -60,9 +76,15 @@ return result;
 
 function clear_content() {
 
- var input = "0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5";
- 
+
+  $("#input").val("0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5");
+  $("#output").val("");
+  $("#calc").val("");
+  $("#zug").val("");
+
+ var input = "0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5"; 
  set_output(input);
+
 
 }
 
@@ -85,13 +107,17 @@ function set_output(val) {
     setval_compute('2', '2', '9',  splits[8]);
 }
 
+function count() {
 
+   counter = $("#zug").val();
+   counter++;
+   $("#zug").val(counter);
 
-
-
+}
 function setval_human(row,cell,feld, wert) {
 	
-	act_field = document.getElementById(feld).value;
+
+    act_field = document.getElementById(feld).value;
 
     if( act_field != '0.5' ) {
 
@@ -102,6 +128,9 @@ function setval_human(row,cell,feld, wert) {
     } else {
 	document.getElementById("board").rows[row].cells[cell].innerHTML='<input type = "hidden" id="' + feld + '"  value="0.5" >';
     }
+
+   $("#output").val(ReadInput());
+   count();
 }
 
 function setval_compute(row,cell,feld, wert) {
@@ -115,22 +144,23 @@ function setval_compute(row,cell,feld, wert) {
     } else {
 	document.getElementById("board").rows[row].cells[cell].innerHTML='<input type = "hidden" id="' + feld + '"  value="0.5" >';
 }
+
+
+
 }
 
 </script>
 
 
+
 <div class="container">
   <div class="row">
 
-    <div class="col-sm-4">
-<input type="text" class="form-control" id="output" placeholder="Berechnung" disabled> 
 
-</div>
-    <div class="col-sm-4">
+    <div class="col-sm-6">
 <table id ='board'>
   <tr>
- <td  onclick="setval_human('0', '0', '1', '1.0')"> <input type="hidden" id="1" value="0.5"> </td>
+ <td before="test()"  onclick="setval_human('0', '0', '1', '1.0')"> <input type="hidden" id="1" value="0.5"> </td>
  <td  onclick="setval_human('0', '1', '2', '1.0')"> <input type="hidden" id="2" value="0.5"> </td>
  <td  onclick="setval_human('0', '2', '3', '1.0')"> <input type="hidden" id="3" value="0.5"> </td>
   </tr>
@@ -146,25 +176,60 @@ function setval_compute(row,cell,feld, wert) {
   </tr>
 </table>
 
-
-    </div>
-    <div class="col-sm-4"> </div>
   </div>
-  <div class="row">
-    <div class="col-sm-4"> </div>
-    <div class="col-sm-4">
-	<div class="center-block">
-    <br><br><button type="button" class="btn btn-success " onclick="python()" id="send" >An Netzwerk sende</button>
-     <button onclick="clear_content()" class="btn btn-danger " >Clear</button>
- 	</div>
-	</div>
-    <div class="col-sm-4">
+ <div class="col-sm-6">
+
+<h2>Rückgabewert</h2>
+<form class="form-horizontal">
+  <div class="form-group">
+    <label for="calc" class="col-sm-2 control-label">Berechnet</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="calc" placeholder="Berechnet">
+    </div>
+  </div>
+
+<h2>Trainingsätze</h2>
+  <div class="form-group">
+    <label for="input" class="col-sm-2 control-label">Input</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="input" placeholder="Input">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="output" class="col-sm-2 control-label">Output</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="output" placeholder="Output">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="zug" class="col-sm-2 control-label">Zug</label>
+    <div class="col-sm-2">
+      <input type="text" class="form-control" id="zug" value="0"  placeholder="Zug">
+    </div>
+  </div>
+
+</form>
 
 </div>
+
+  </div>
+  <div class="row">
+    <div class="col-sm-6"> </div>
+
+    <div class="col-sm-6">
+	<div class="center-block">
+    <br><br><button type="button" class="btn btn-success"  onclick="python()" id="send" >senden</button>
+     <button onclick="clear_content()" class="btn btn-danger " >Clear</button>
+
+<br> <h2>Trainingsmodus </h2>
+<input type="checkbox" class="chk">
+<p>Im Trainingsmodus werden Trainingssätze für das Neuronale Netzwerk erzeugt. Diese Trainingssätze bilden die Grundlage für das selbständige Training und das gewichten der Neuronen. </p>
+ 	</div>
+	</div>
   
  </div>
 </div>
-
 
 
 
