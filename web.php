@@ -33,7 +33,7 @@ if ( $(".chk").is(":checked")) {
 	$("#output").val(ReadInput());
 	$.ajax({
         	type: 'POST',	
-        	url: "/neuronal_network/python_call.php",
+        	url: "/neuronal_network/PythonCall_play.php",
 		data: "input="+ ReadInput(),
        		success: function(data){
 			$("#calc").val(data);
