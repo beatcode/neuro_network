@@ -18,5 +18,6 @@ http://107.170.159.73/neuronal_network/web.php
 
 Python Testen
 =============
-python tic.py "0.5,0,0,0,0,0,0,0,0"
+$ python tic.py "0.5,0,0,0,0,0,0,0,0"
+
 Sollte Fehlerfrei 1.0, 1.0, 0.0, 0.1, 0.0, 0.3, 1.0, 1.0, 1.0 zurück geben.
