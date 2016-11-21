@@ -24,6 +24,7 @@ function python() {
 $(document).ready(function(){
 
     $(".chk").click(function() {
+	alert("In Entwicklung");
         clear_content();
     });
 });
@@ -111,15 +112,13 @@ function set_player(val) {
 
 function setval_human(row,cell,feld, wert) {
 
-
-
     act_field = document.getElementById(feld).value;
 
 
     if ( $(".chk").is(":checked")) {
 // training
 
-
+	
     } else   {
 
         set_firstplayer();
