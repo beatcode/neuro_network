@@ -1,6 +1,6 @@
 # neuroal_network
 
-Ziel: Erste Gehversuche mit dem Einsatz eines einfachen Neuronalen Netzwerks anhand von dem Spiel Tic Tac Toe. 
+Ziel: Erste Gehversuche mit dem Einsatz eines einfachen Neuronalen Netzwerks am Beispile Tic Tac Toe. 
 
 Einstellungen
 =============
@@ -23,3 +23,5 @@ Python Testen
 $ python tic.py "0.5,0,0,0,0,0,0,0,0"
 
 Sollte Fehlerfrei 1.0, 1.0, 0.0, 0.1, 0.0, 0.3, 1.0, 1.0, 1.0 zurück geben.
+
+Quelle: https://medium.com/technology-invention-and-more/how-to-build-a-simple-neural-network-in-9-lines-of-python-code-cc8f23647ca1#.pea0nt22f
