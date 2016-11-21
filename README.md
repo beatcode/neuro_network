@@ -2,6 +2,10 @@
 
 Ziel: Erste Gehversuche mit dem Einsatz eines einfachen Neuronalen Netzwerks am Beispile Tic Tac Toe. 
 
+Live Demo
+=========
+http://107.170.159.73/neuronal_network/web.php
+
 Einstellungen
 =============
 9 Input | 9 Output | 1 Hiddenschicht mit 10 Neuronen | 3 ausgeprägte Games in Form von Trainingssätzen
@@ -14,9 +18,7 @@ Ein Trainingsmodus mit welchem dem Netz eigene Trainingssätze mitgegeben werden
  - Jeder gespielte Zug soll durch das senden an das Netzwerk als Trainingssatz in 2 txt Dateien Input.txt und Output.txt angefügt werden. 
  - Das Netzwerk soll sich mittels den Trainingssätzen trainieren und das Resultat in der Datei Gewichtungen.txt abspecheichern.
  
-Live Demo
-=========
-http://107.170.159.73/neuronal_network/web.php
+
 
 Python Testen
 =============
