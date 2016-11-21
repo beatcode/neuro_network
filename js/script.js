@@ -1,10 +1,19 @@
 
+$(document).ready(function(){
+    $(".chk").click(function() {
+        alert('In Entwicklung');
+        clear_content();
+    });
+});
+
+
+
 function python() {
 
     if ( $(".chk").is(":checked")) {
 
     } else {
-
+        set_player();
         $("#output").val(ReadInput());
         $.ajax({
             type: 'POST',
@@ -21,25 +30,17 @@ function python() {
 
     }}
 
-$(document).ready(function(){
-
-    $(".chk").click(function() {
-	alert("In Entwicklung");
-        clear_content();
-    });
-});
 
 
-function set_firstplayer() {
+function set_player() {
 
-    player = $("#zug").val();
+    player = $("#player").val();
 
-    if  (player == "0") {
-        $("#player").val("1");
-    } else if (player == "1" ) {
+    if  (player == "1") {
         $("#player").val("2");
+    } else if (player == "2") {
+        $("#player").val("1");
     }
-
 }
 
 function ReadInput() {
@@ -55,10 +56,7 @@ function ReadInput() {
     feld9 = document.getElementById("9").value;
 
     var result = [feld1,feld2,feld3,feld4,feld5,feld6,feld7,feld8,feld9];
-
-
     return result;
-
 }
 
 
@@ -68,7 +66,7 @@ function clear_content() {
     $("#output").val("");
     $("#calc").val("");
     $("#zug").val("0");
-    $("#player").val("-");
+    $("#player").val("1");
 
     var input = "0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5";
     set_output(input);
@@ -100,30 +98,29 @@ function count_Zug() {
     $("#zug").val(counter);
 }
 
-function get_player() {
-    return $("#gezogen").val();
+function get_value() {
+    var player = $("#player").val();
+    if (player == "1") {
+        return "1.0";
+    } else if (player == "2") {
+        return "0.0";
+    }
+
 }
 
 
-function set_player(val) {
-    $("#gezogen").val(val);
-
-}
 
 function setval_human(row,cell,feld, wert) {
 
+    var wert = get_value();
+
+
     act_field = document.getElementById(feld).value;
 
-
     if ( $(".chk").is(":checked")) {
-// training
+        // training
 
-	
-    } else   {
-
-        set_firstplayer();
-
-// Play
+        // Play
         if( act_field != '0.5' ) {
 
         } else if ( wert == '0.0') {
@@ -136,7 +133,27 @@ function setval_human(row,cell,feld, wert) {
 
         $("#output").val(ReadInput());
         count_Zug();
-        set_player("1");
+        set_player();
+
+
+    } else   {
+
+
+
+        // Play
+        if( act_field != '0.5' ) {
+
+        } else if ( wert == '0.0') {
+            document.getElementById("board").rows[row].cells[cell].innerHTML='<h2><i class="fa fa-circle-thin"></i></h2> <input type = "hidden" id="' + feld + '"  value="' + wert + '" >';
+        } else if (wert == '1.0') {
+            document.getElementById("board").rows[row].cells[cell].innerHTML='<h2><i class="fa fa-times"></i></h2> <input type = "hidden" id="' + feld + '"  value="' + wert + '" >';
+        } else {
+            document.getElementById("board").rows[row].cells[cell].innerHTML='<input type = "hidden" id="' + feld + '"  value="0.5" >';
+        }
+
+        $("#output").val(ReadInput());
+        count_Zug();
+        set_player();
     }
 
 }
@@ -149,4 +166,6 @@ function setval_compute(row,cell,feld, wert) {
     } else {
         document.getElementById("board").rows[row].cells[cell].innerHTML='<input type = "hidden" id="' + feld + '"  value="0.5" >';
     }
+
 }
+

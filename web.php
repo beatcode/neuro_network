@@ -4,12 +4,11 @@
 
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <script language="javascript" type="text/javascript" src="js/script.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <script language="javascript" type="text/javascript" src="js/script.js"></script>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link type="text/css" rel="stylesheet" href="css/style.css" />
-
 
     <title> Tic-Tac-Toe </title>
 
@@ -17,14 +16,10 @@
         <h1>Neuronales Netzwerk</h1>
     </div>
 
-
 <body>
-
 
 <div class="container">
     <div class="row">
-
-
         <div class="col-sm-6">
             <table id ='board'>
                 <tr>
@@ -57,17 +52,13 @@
             </div>
 
         </div>
-
         </form>
-
     </div>
 
 </div>
 <div class="row">
     <div class="col-sm-6"> </div>
-
     <div class="col-sm-6">
-
         <h2>Rückgabewert</h2>
         <form class="form-horizontal">
             <div class="form-group">
@@ -98,13 +89,12 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="player" class="col-sm-2 control-label">Mensch</label>
+                <label for="player" class="col-sm-2 control-label">Player</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" id="player" value="-"  placeholder="">
+                    <input type="text" class="form-control" id="player" value="1"  placeholder="">
                 </div>
             </div>
     </div>
-
 </div>
 </div>
 
