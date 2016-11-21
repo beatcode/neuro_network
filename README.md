@@ -1,5 +1,7 @@
 # neuroal_network
 
+Austausch erwünscht.
+
 Tic Tac Toe
 ===========
 Ein einfaches Neuronales Netzwerk mit 1 hidden Schicht.
