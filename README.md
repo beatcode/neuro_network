@@ -15,10 +15,9 @@ Todo (In Entwicklung)
 Ein Trainingsmodus mit welchem dem Netz eigene Trainingssätze mitgegeben werden kann.  
  - Input.txt | Output.txt und Gewichtungen.txt löschen.
  - Spieler spielt im Trainingsmodus für beide Spieler einen Zug und sendet diesen an das Netzwerk.
- - Jeder gespielte Zug soll durch das senden an das Netzwerk als Trainingssatz in 2 txt Dateien Input.txt und Output.txt angefügt werden. 
- - Das Netzwerk soll sich mittels den Trainingssätzen trainieren und das Resultat in der Datei Gewichtungen.txt abspecheichern.
+ - Jeder gespielte Zug soll durch das senden an das Netzwerk als Trainingssatz in 2 txt Dateien Input.txt und Output.txt angefügt werden.
+ - Das Netzwerk soll im Anschluss alle Traininssätze laden und sich trainieren. Die errechneten Gewichtungen sollen in der Datei Gewichtungen.txt abgespecheicht werden. 
  
-
 
 Python Testen
 =============
