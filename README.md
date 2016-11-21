@@ -6,7 +6,7 @@ Ein einfaches Neuronales Netzwerk mit 1 hidden Schicht.
 
 Training
 ========
-Aktuelle sind 3 korrekt gespielte Games mit Input/Output fest hinterlegt.
+Aktuelle sind lediglich 3 korrekt gespielte Games mit Input/Output fest hinterlegt.
 
 Todo
 ====
