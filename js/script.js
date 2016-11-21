@@ -8,7 +8,7 @@ function python() {
         $("#output").val(ReadInput());
         $.ajax({
             type: 'POST',
-            url: "/neuronal_network/PythonCall_play.php",
+            url: "/neuronal_network/ajax/PythonCall_play.php",
             data: "input="+ ReadInput(),
             success: function(data){
                 $("#calc").val(data);
