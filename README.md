@@ -1,6 +1,9 @@
 # neuroal_network
 
-Das Repository wird laufend angepasst. Es dient für das Verständnis der Funktionsweise eines einfachen neuronalen Netzwerk.
+Das Repository wird laufend erweitert.
+
+Test
+http://107.170.159.73/neuronal_network/web.php
 
 Tic Tac Toe
 ===========
