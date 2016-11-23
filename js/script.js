@@ -24,7 +24,7 @@ function python() {
       }
     });
 
-    count();
+   
   }
 }
 

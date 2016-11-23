@@ -4,11 +4,9 @@ import numpy as np
 import sys, os
 
 
-class NeuronLayer():
-    def __init__(self, number_of_neurons, number_of_inputs_per_neuron):
-        self.synaptic_weights = 2 * random.random((number_of_inputs_per_neuron, number_of_neurons)) - 1
-
-
+class NeuronLayer():	
+		def __init__(self, number_of_neurons, number_of_inputs_per_neuron):
+   			self.synaptic_weights = 2 * random.random((number_of_inputs_per_neuron, number_of_neurons)) - 1
 
 class NeuralNetwork():
     def __init__(self, layer1, layer2, input):
@@ -29,9 +27,11 @@ class NeuralNetwork():
     def __sigmoid_derivative(self, x):
         return x * (1 - x)
 
+		
     # We train the neural network through a process of trial and error.
     # Adjusting the synaptic weights each time.
     def train(self, training_set_inputs, training_set_outputs, number_of_training_iterations):
+			
         for iteration in xrange(number_of_training_iterations):
             # Pass the training set through our neural network
             output_from_layer_1, output_from_layer_2 = self.think(training_set_inputs)
@@ -57,11 +57,16 @@ class NeuralNetwork():
 
     # The neural network thinks.
     def think(self, inputs):
-        output_from_layer1 = self.__sigmoid(dot(inputs, self.layer1.synaptic_weights))
-        output_from_layer2 = self.__sigmoid(dot(output_from_layer1, self.layer2.synaptic_weights))
-        return output_from_layer1, output_from_layer2
+	output_from_layer1 = self.__sigmoid(dot(inputs, self.layer1.synaptic_weights))
+	output_from_layer2 = self.__sigmoid(dot(output_from_layer1, self.layer2.synaptic_weights))
+	return output_from_layer1, output_from_layer2
 
-    # The neural network prints its weights
+    def set_weights(self):
+	self.layer1.synaptic_weights = np.loadtxt('/var/www/html/neuronal_network/data/weights_layer1.txt', delimiter=",")
+	self.layer2.synaptic_weights = np.loadtxt('/var/www/html/neuronal_network/data/weights_layer2.txt', delimiter=",")
+		
+		
+		# The neural network prints its weights
     def get_weights(self, layer):
      	if layer == '1':
            return self.layer1.synaptic_weights

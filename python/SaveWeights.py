@@ -30,23 +30,16 @@ if __name__ == "__main__":
 
     # Combine the layers to create a neural network
     neural_network = NeuralNetwork(layer1, layer2, input)
-
-    training_set_inputs = np.loadtxt('/var/www/html/neuronal_network/data/input.txt', delimiter=",")
       
+    # Lade die Input und Output Arrays
+    training_set_inputs = np.loadtxt('/var/www/html/neuronal_network/data/input.txt', delimiter=",")
     training_set_outputs = np.loadtxt('/var/www/html/neuronal_network/data/output.txt', delimiter=",")
     
     # Train the neural network using the training set.
     # Do it x times and make small adjustments each time.
-    #neural_network.train(training_set_inputs, training_set_outputs, 7000)
-  
-    neural_network.set_weights()
-    
-    # Test the neural network with a new situation.
-    hidden_state, output = neural_network.think( input )
+    neural_network.train(training_set_inputs, training_set_outputs, 100000)
 
-    # Output Konvertieren 
-    output_round = [ round(elem, 1) for elem in output ]
-    output_round_string = str(output_round).strip('[]')
-        	
-    # fuer ajax ausgeben
-    print output_round_string
+    # Erstelle die neuen Array mit den Gewichtungen
+    np.savetxt('/var/www/html/neuronal_network/data/weights_layer1.txt',  neural_network.get_weights('1'), delimiter=",")
+    np.savetxt('/var/www/html/neuronal_network/data/weights_layer2.txt',  neural_network.get_weights('2'), delimiter=",")
+    
