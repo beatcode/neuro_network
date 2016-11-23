@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: ascii -*-
+
 #Quelle: https://medium.com/technology-invention-and-more/how-to-build-a-simple-neural-network-in-9-lines-of-python-code-cc8f23647ca1#.pea0nt22f
 from numpy import exp, array, random, dot
 import numpy as np
@@ -65,13 +68,10 @@ class NeuralNetwork():
 	self.layer1.synaptic_weights = np.loadtxt('/var/www/html/neuronal_network/data/weights_layer1.txt', delimiter=",")
 	self.layer2.synaptic_weights = np.loadtxt('/var/www/html/neuronal_network/data/weights_layer2.txt', delimiter=",")
 		
-		
 		# The neural network prints its weights
     def get_weights(self, layer):
      	if layer == '1':
            return self.layer1.synaptic_weights
        	elif layer == '2':
 	   return self.layer2.synaptic_weights
-        # print "    Layer 2 (1 neuron, with 4 inputs): </br>" 
-        # print self.layer2.synaptic_weights
 

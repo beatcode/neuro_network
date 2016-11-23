@@ -10,6 +10,19 @@ function python() {
 
   if ($(".chk").is(":checked")) {
 
+    set_player();
+    $("#output").val(ReadInput());
+    $.ajax({
+      type: 'POST',
+      url: "/neuronal_network/ajax/PythonCall_Train.php",
+      data: "input=" + ReadInput() + " output=" + ReadInput(),
+      success: function(data) {
+        $("#calc").val(data);
+        $("#input").val(data);
+        set_output(data);
+      }
+    });
+    
   } else {
     set_player();
     $("#output").val(ReadInput());
@@ -23,10 +36,11 @@ function python() {
         set_output(data);
       }
     });
-
-   
   }
 }
+
+
+
 
 
 
