@@ -32,7 +32,7 @@ if __name__ == "__main__":
     neural_network = NeuralNetwork(layer1, layer2, input)
 
     training_set_inputs = np.loadtxt('/var/www/html/neuronal_network/data/input.txt', delimiter=",")
-      
+    
     training_set_outputs = np.loadtxt('/var/www/html/neuronal_network/data/output.txt', delimiter=",")
     
     # Train the neural network using the training set.

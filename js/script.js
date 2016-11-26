@@ -1,31 +1,45 @@
 $(document).ready(function() {
   $(".chk").click(function() {
-    alert('In Entwicklung');
-    clear_content();
+    if ($(".chk").is(":checked")) {
+      alert('In Entwicklung');
+      clear_content();
+    } else {
+      weights()
+    }
+
   });
 });
 
 
+function weights(){
+   $.ajax({
+      type: 'POST',
+      url: "/neuronal_network/ajax/PythonCall_weights.php",
+      success: function(data) {
+        alert("Gewichtungen errechnet");
+        // set_output(data);
+      }
+    });
+}
+
 function python() {
+
+  set_player();
 
   if ($(".chk").is(":checked")) {
 
-    set_player();
-    $("#output").val(ReadInput());
     $.ajax({
       type: 'POST',
       url: "/neuronal_network/ajax/PythonCall_Train.php",
-      data: "input=" + ReadInput() + " output=" + ReadInput(),
+      data: "input=" + $("#input").val() + "&output=" + $("#output").val(),
       success: function(data) {
-        $("#calc").val(data);
-        $("#input").val(data);
-        set_output(data);
+
+        // set_output(data);
       }
     });
-    
+
   } else {
-    set_player();
-    $("#output").val(ReadInput());
+
     $.ajax({
       type: 'POST',
       url: "/neuronal_network/ajax/PythonCall_play.php",
@@ -74,13 +88,13 @@ function ReadInput() {
 
 function clear_content() {
 
-  $("#input").val("0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5");
+  $("#input").val("0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5");
   $("#output").val("");
   $("#calc").val("");
   $("#zug").val("0");
   $("#player").val("1");
 
-  var input = "0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5";
+  var input = "0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5";
   set_output(input);
 
 }
@@ -101,6 +115,11 @@ function set_output(val) {
   setval_compute('2', '0', '7', splits[6]);
   setval_compute('2', '1', '8', splits[7]);
   setval_compute('2', '2', '9', splits[8]);
+}
+
+
+function get_zug() {
+  return $("#zug").val();
 }
 
 function count_Zug() {
@@ -126,11 +145,11 @@ function setval_human(row, cell, feld, wert) {
 
   var wert = get_value();
 
-
   act_field = document.getElementById(feld).value;
 
+  // training
   if ($(".chk").is(":checked")) {
-    // training
+
 
     // Play
     if (act_field != '0.5') {
@@ -143,10 +162,18 @@ function setval_human(row, cell, feld, wert) {
       document.getElementById("board").rows[row].cells[cell].innerHTML = '<input type = "hidden" id="' + feld + '"  value="0.5" >';
     }
 
+    // aktueller output wird für den nächsten zug zum input
+    if (get_zug() != 0) {
+      $("#input").val($("#output").val());
+    }
+
+
+    // Output wird neu vom aktuellers Situation gelesen.
     $("#output").val(ReadInput());
     count_Zug();
-    set_player();
 
+    // An Python senden
+    python()
 
   } else {
 

@@ -32,8 +32,8 @@ if __name__ == "__main__":
     neural_network = NeuralNetwork(layer1, layer2, input)
       
     # Lade die Input und Output Arrays
-    training_set_inputs = np.loadtxt('/var/www/html/neuronal_network/data/input.txt', delimiter=",")
-    training_set_outputs = np.loadtxt('/var/www/html/neuronal_network/data/output.txt', delimiter=",")
+    training_set_inputs = np.loadtxt('/var/www/html/neuronal_network/data/input_1.txt', delimiter=",")
+    training_set_outputs = np.loadtxt('/var/www/html/neuronal_network/data/output_1.txt', delimiter=",")
     
     # Train the neural network using the training set.
     # Do it x times and make small adjustments each time.
