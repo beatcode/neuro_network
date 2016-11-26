@@ -1,7 +1,7 @@
 <?php
 
 
-$command = escapeshellcmd("/usr/bin/python /var/www/html/neuronal_network/python/SaveWeights.py [1,1,1,1,1,1,1,1,1]");
+$command = escapeshellcmd("/usr/bin/python /var/www/html/neuronal_network/python/SaveWeights.py");
 $output = exec($command);
 
 ?>

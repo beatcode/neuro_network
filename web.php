@@ -45,11 +45,12 @@
           <div class="center-block">
             <br><br><button type="button" class="btn btn-success" onclick="python()" id="send">senden</button>
             <button onclick="clear_content()" class="btn btn-danger ">Clear</button>
+            <button onclick="delete_file()" class="btn btn-danger ">Gewichtungen löschen</button>
 
             <br>
             <h2>Trainingsmodus </h2>
             <input type="checkbox" class="chk">
-            <p>Im Trainingsmodus werden Trainingssätze für das Neuronale Netzwerk erzeugt. Diese Trainingssätze bilden die Grundlage für das selbständige Training und das gewichten der Neuronen. </p>
+            <p>Im Trainingsmodus werden Trainingssätze für das Neuronale Netzwerk erzeugt. Diese Trainingssätze bilden die Grundlage für die Berechnung der Gewichtungen zwischen den Neuronen. </p>
           </div>
         </div>
         </form>
@@ -101,3 +102,4 @@
     <input type="hidden" class="form-control" id="gezogen" value="0" placeholder="">
     <!-- <button onclick="alert(ReadInput())">Zeig Input Parameter</button> -->
     </div>
+  

@@ -2,14 +2,25 @@ $(document).ready(function() {
   $(".chk").click(function() {
     if ($(".chk").is(":checked")) {
       alert('In Entwicklung');
+     
       clear_content();
     } else {
       weights()
+      clear_content();
     }
-
   });
 });
 
+function delete_file(){
+   $.ajax({
+      type: 'POST',
+      url: "/neuronal_network/ajax/PythonCall_clear.php",
+      success: function(data) {
+        alert("Gewichtungen gelösccht");
+        clear_content();
+      }
+    });
+}
 
 function weights(){
    $.ajax({
@@ -52,10 +63,6 @@ function python() {
     });
   }
 }
-
-
-
-
 
 
 function set_player() {
@@ -167,7 +174,6 @@ function setval_human(row, cell, feld, wert) {
       $("#input").val($("#output").val());
     }
 
-
     // Output wird neu vom aktuellers Situation gelesen.
     $("#output").val(ReadInput());
     count_Zug();
@@ -176,8 +182,6 @@ function setval_human(row, cell, feld, wert) {
     python()
 
   } else {
-
-
 
     // Play
     if (act_field != '0.5') {
@@ -193,6 +197,7 @@ function setval_human(row, cell, feld, wert) {
     $("#output").val(ReadInput());
     count_Zug();
     set_player();
+    python();
   }
 
 }

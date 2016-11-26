@@ -20,7 +20,7 @@ if __name__ == "__main__":
     layer2 = NeuronLayer(9, 10)
 
     # Parameter Uebergabe von PHP Script
-    input_parameter =  sys.argv[1]
+    input_parameter =  "1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0"
     
     # Parameter konvertieren I
     input_int = input_parameter.split(',')
@@ -37,9 +37,10 @@ if __name__ == "__main__":
     
     # Train the neural network using the training set.
     # Do it x times and make small adjustments each time.
-    neural_network.train(training_set_inputs, training_set_outputs, 100000)
+    neural_network.train(training_set_inputs, training_set_outputs, 350000)
 
     # Erstelle die neuen Array mit den Gewichtungen
     np.savetxt('/var/www/html/neuronal_network/data/weights_layer1.txt',  neural_network.get_weights('1'), delimiter=",")
     np.savetxt('/var/www/html/neuronal_network/data/weights_layer2.txt',  neural_network.get_weights('2'), delimiter=",")
+    
     
